@@ -1,13 +1,3 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
-
-## Gitpod Template Instructions
-
-Welcome,
-
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions. Click the Use this template button to get started.
-
-You can safely delete the Gitpod Template Instructions section of this README.md file,  and modify the remaining paragraphs for your own project. Please do read the Gitpod Template Instructions at least once, though! It contains some important information about Gitpod and the extensions we use. 
-
 ## Gitpod Reminders
 
 To log into the Heroku toolbelt CLI:
@@ -80,6 +70,23 @@ Although your friend has an excellent understanding of property prices in her ow
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
 * Eventually, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but eventually you needed to use another plot type)
 
+### Page 1: Quick Project Summary
+
+A high-level summary of the project, including:
+* terms and jargon;
+* information on the dataset; and
+* the business/client requirements.
+
+### Page 2: House Sale Price Study
+
+
+### Page 3: House Sale Price Predictor
+
+
+### Page 4: Project Hypothesis and Validation
+
+
+### Page 5: ML Model Performance
 
 
 ## Unfixed Bugs
