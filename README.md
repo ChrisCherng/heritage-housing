@@ -116,6 +116,7 @@ A high-level summary of the project, including:
 
 ### Content 
 
+- The custom functions used to compute and visualise correlation and PPS as part of the House Price Correlation work have been taken from the Code Institution learning materials, specifically the "Predictive Power Score Unit 1" lesson notebook.
 - The text for the Home page was taken from Wikipedia Article A
 - Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
 - The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
