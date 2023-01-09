@@ -1,9 +1,11 @@
 import streamlit as st
 from src.data_management import load_house_prices_data
 
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 sns.set_style("whitegrid")
+import ppscore as pps
 
 def correlation_study_body():
 
@@ -58,12 +60,35 @@ def correlation_study_body():
     st.write("---")
 
     st.write(
-        f"As part of the correlation study, heatmaps have been prepared to demonstrate the"
+        f"As part of the correlation study, heatmaps have been prepared to demonstrate the "
         f"correlation of variables to each other, as well as the Predictive Power Score (PPS)."
     )
 
+    if st.checkbox("Spearman Correlations"):
+        st.write(
+            f"* This plot shows how correlated each variable is to each other, in terms of a monotonic relationship.\n"
+            f"* Only those with a score over 0.6 are displayed, to show the strong correlations."
+            )
+        df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
+        heatmap_corr(df=df_corr_spearman, threshold=0.6, figsize=(20, 12), font_annot=15)
 
+    if st.checkbox("Peason Correlations"):
+        st.write(
+            f"* This plot shows how correlated each variable is to each other, in terms of a linear relationship.\n"
+            f"* Only those with a score over 0.6 are displayed, to show the strong correlations."
+            )
+        df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
+        heatmap_corr(df=df_corr_pearson, threshold=0.6, figsize=(20, 12), font_annot=15)
 
+    if st.checkbox("Predictive Power Score"):
+        st.write(
+            f"* This plot shows how strong a variable (on the x-axis) can predict a variable on the y-axis.\n"
+            f"* Only those with a score over 0.15 are displayed, to show the strong predictive powers."
+            )
+        df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
+        heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(20, 12), font_annot=15)
+
+# Functions to display scatterplots to show correlations
 def sales_price_per_variable(df_eda):
     """ Runs the scatterplots against SalePrice """
     target_var = 'SalePrice'
@@ -78,3 +103,44 @@ def plot_scatter(df, col, target_var):
     plt.xticks(rotation=90)
     plt.title(f"{col}", fontsize=20, y=1.05)
     st.pyplot(fig)
+
+
+# Functions to display heatmaps for correlation and PPS
+def heatmap_corr(df, threshold, figsize=(20, 12), font_annot=15):
+    if len(df.columns) > 1:
+        mask = np.zeros_like(df, dtype=np.bool)
+        mask[np.triu_indices_from(mask)] = True
+        mask[abs(df) < threshold] = True
+
+        fig, axes = plt.subplots(figsize=figsize)
+        sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                    mask=mask, cmap='viridis', annot_kws={"size": font_annot}, ax=axes,
+                    linewidth=0.5
+                    )
+        axes.set_yticklabels(df.columns, rotation=0, fontsize=20)
+        axes.set_xticklabels(df.columns, fontsize=20)
+        plt.ylim(len(df.columns), 0)
+        st.pyplot(fig)
+
+
+def heatmap_pps(df, threshold, figsize=(20, 12), font_annot=15):
+    if len(df.columns) > 1:
+        mask = np.zeros_like(df, dtype=np.bool)
+        mask[abs(df) < threshold] = True
+        fig, ax = plt.subplots(figsize=figsize)
+        ax = sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                         mask=mask, cmap='rocket_r', annot_kws={"size": font_annot},
+                         linewidth=0.05, linecolor='grey')
+        ax.set_yticklabels(df.columns, rotation=0, fontsize=20)
+        ax.set_xticklabels(df.columns, fontsize=20)
+        plt.ylim(len(df.columns), 0)
+        st.pyplot(fig)
+
+def CalculateCorrAndPPS(df):
+    df_corr_spearman = df.corr(method="spearman")
+    df_corr_pearson = df.corr(method="pearson")
+
+    pps_matrix_raw = pps.matrix(df)
+    pps_matrix = pps_matrix_raw.filter(['x', 'y', 'ppscore']).pivot(columns='x', index='y', values='ppscore')
+
+    return df_corr_pearson, df_corr_spearman, pps_matrix
