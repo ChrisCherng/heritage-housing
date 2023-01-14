@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 
 from src.data_management import (load_house_prices_data, load_inherited_houses_data, load_pkl_file)
+from src.machine_learning.predictive_analysis_ui import predict_price
 
 def price_predictor_body():
     st.write("### House Sale Price Predictor")
@@ -20,10 +21,10 @@ def price_predictor_body():
     st.write(df_inherited_houses_data)
 
     st.write(
-        f"* 0: \n"
-        f"* 1: \n"
-        f"* 2: \n"
-        f"* 3: \n"
+        f"* Index 0: 130,582\n"
+        f"* Index 1: 154,283\n"
+        f"* Index 2: 160,965\n"
+        f"* Index 3: 181,734\n"
     )
 
     st.write("#### Any Properties")
@@ -34,8 +35,15 @@ def price_predictor_body():
 
     X_live = DrawInputsWidgets()
 
+    price_prediction = predict_price(X_live, features, pipeline_regressor)
 
+    if st.button("Predict Price"):
+        st.success(f"Predicted house price: {price_prediction}")
+
+version = 'v1'
 df_inherited_houses_data = load_inherited_houses_data()
+pipeline_regressor = load_pkl_file(f"outputs/ml_pipeline/predict_price/{version}/final_regressor_pipeline.pkl")
+features = (pd.read_csv(f"outputs/ml_pipeline/predict_price/{version}/X_train.csv").columns.to_list())
 
 def DrawInputsWidgets():
 

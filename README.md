@@ -53,6 +53,7 @@ Although your friend has an excellent understanding of property prices in her ow
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
+The client has indicated that any model used for predicting the house sale prices must have an R2 score of at least 0.7 in order to give her confidence in the results.
 
 ## Hypothesis and how to validate?
 * List here your project hypothesis(es) and how you envision validating it (them).
