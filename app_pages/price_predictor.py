@@ -8,7 +8,7 @@ def price_predictor_body():
     st.write("### House Sale Price Predictor")
 
     st.info(
-        f"* The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa."
+        f"The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa."
     )
 
     st.write("#### Inherited Properties")
@@ -25,6 +25,7 @@ def price_predictor_body():
         f"* Index 1: 154,283\n"
         f"* Index 2: 160,965\n"
         f"* Index 3: 181,734\n"
+        f"* **Total: 627,564**\n"
     )
 
     st.write("#### Any Properties")

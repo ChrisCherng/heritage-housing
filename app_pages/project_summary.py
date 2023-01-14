@@ -4,15 +4,17 @@ def project_summary_body():
     st.write("### Project Summary")
 
     st.info(
-        f"**Project Dataset**\n"
+        f"**Project Dataset Summary**\n"
         f"* The dataset represents the housing records from Ames, Iowa, "
         f"indicating the profile of the house (e.g. Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) "
         f"and its respective sale price for houses built between 1872 and 2010.\n"
+        f"* A sample of the data can be inspected in the House Sale Price Study page.\n"
         f"* The data has been sourced from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).\n\n"
         f"**Project Terms & Jargon**\n"
         f"* The **variables** are the different attributes of the house.\n"
         f"* The **target variable** is the variable that is trying to be predicted."
-        f"For this project, this is the **sale price** of the house."
+        f"For this project, this is the **sale price** of the house.\n"
+        f"* The **R2 (or R squared)** metric, is the proportion of the variation in the dependent variable that is predictable from the independent variable(s)"
     )
 
     st.write(

@@ -1,17 +1,9 @@
-## Gitpod Reminders
+# Heritage Housing
 
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Heritage Housing is a project designed to study and predict the sales prices of houses in the city of Ames, Iowa, as requested by a client.
 
 ## Dataset Content
-* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). We then created a fictitious user story where predictive analytics can be applied in a real project in the workplace. 
+* The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data).
 * The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
 
 |Variable|Meaning|Units|
@@ -42,9 +34,6 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 |SalePrice|Sale Price|34900 - 755000|
 
 
-
-
-
 ## Business Requirements
 As a good friend, you are requested by your friend, who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, to  help in maximising the sales price for the inherited properties.
 
@@ -53,19 +42,71 @@ Although your friend has an excellent understanding of property prices in her ow
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
-The client has indicated that any model used for predicting the house sale prices must have an R2 score of at least 0.7 in order to give her confidence in the results.
+The client has indicated that any model used for predicting the house sale prices must have an R2 score of at least 0.75 in order to give her confidence in the results.
 
-## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them).
+## Hypothesis and Validation
+Before undertaking the data analysis, a project hypothesis was posed. This is the outcome that would be expected, and will be verified as to whether it is true or not as part of the data analysis.
+
+- **Hypothesis**: Houses that are larger and of higher quality, will have a higher sales price.
+- **Validation**: This will be validated by studying the correlation between house size and quality variables, with the target sales price variable.
 
 
 ## The rationale to map the business requirements to the Data Visualisations and ML tasks
-* List your business requirements and a rationale to map them to the Data Visualisations and ML tasks.
+| Requirement | Tasks |
+| --- | --- |
+| 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that. | <ul> <li>Review dataset using Pandas Profiling.</li> <li>Run a correlation study using Pearson and Spearman correlation, and Predictive Power Score.</li> <li>Select the variables to consider for studying.</li> <li>Create graphs to visualise the correlations to Sale Price for the selected variables.</li> </ul>|
+| 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa. | <ul> <li>Determine and perform data cleansing and feature engineering.</li> <li>Select a suitable algorithm to apply to the data to predict sale price.</li> <li>Determine the appropriate hyperparameters to ensure the model meets the client requirements.</li> <li>Deploy a Streamlit dashboard to display the information for the above.</li> </ul> |
 
 
 ## ML Business Case
-* In the previous bullet, you potentially visualised an ML task to answer a business requirement. You should frame the business case using the method we covered in the course.
+* The aim is to create an ML model to predict the sale price of houses in Ames, Iowa. A target variable is an integer. We consider a regression model, which is supervised and uni-dimensional.
+* The ideal outcome is to provide the client with accurate predictions for the sale price of the houses in her inherited portfolio as well as any other house, so that she can maximise the prices. This will be though the use of a dashboard.
+* The model success metrics are:
+    * At least 0.75 for R2 score on both train and test sets
+    * The ML model is considered a failure if the R2 score is below 0.75 on either (or both) the train and test sets, and/or if the model's predictions are more than 50% off for 30% of inputs after 12 months of use. If this occurs, new/updated models should be developed.
+* The output is defined as a continuous value for the sale price. This will be both for the client's inherited properties, as well as for any house in Ames, Iowa, using house attribute information.
+* Heuristics: Currently, there is no approach to predict the sale price of houses.
+* The training data to fit the model comes from the dataset obtained from Kaggle (see Dataset Content above). This dataset contains about 1.5 thousand house records in the area.
+    * The target variable is SalePrice, with all other variables being considered for the model.
 
+## Epics and User Stories
+
+The project has been broken down into five epics. These have been shown below, along with the associated user stories, mapping to business requirements (see above), and how each story has been completed.
+
+### Epic 1: Information gathering and data collection
+
+| Ref | User Story | Business Requirement(s) | Completion |
+| --- | --- | --- | --- |
+| 1.1 | As a user, I want to be able to view the data in the dashboard so that I can verify that it is correct. | 1,2 | The dashboard includes the head of the dataset which can be inspected. |
+
+### Epic 2: Data visualization, cleaning, and preparation
+
+| Ref | User Story | Business Requirement(s) | Completion |
+| --- | --- | --- | --- |
+| 2.1 | As a user, I want to be able to examine data visualisations so that I can discover how the house attributes correlate with the sale price. | 1 | The House Sale Price Study page includes scatterplots to visualise the key attributes that correlate with the sale price. |
+
+### Epic 3: Model training, optimization and validation
+
+| Ref | User Story | Business Requirement(s) | Completion |
+| --- | --- | --- | --- |
+| 3.1 | As a user, I want to be able to predict the sale price of the portfolio of houses that I inherited so that I can make decisions to maximise my income. | 2 | The House Sale Price Predictor page includes the data on the inherited house portfolio, along with the model predicted sale price for each and in total. |
+| 3.2 | As a user, I want to be able to predict the sale price of houses in Ames, Iowa, so that I can make decisions on future houses. | 2 | The House Sale Price Predictor page includes the ability to input house attributes to output a predicted sale price. |
+
+### Epic 4: Dashboard planning, designing, and development
+
+| Ref | User Story | Business Requirement(s) | Completion |
+| --- | --- | --- | --- |
+| 4.1 | As a user, I want to be able to view a summary of the project so that I can remind myself of the project purpose. | 1,2 | The dashboard includes a Project Summary page that provides the key information. |
+| 4.2 | As a user, I want to be able to view information on the attribute correlations so that I can understand how variables correlate with sale price. | 1 | The House Sale Price Study page includes information and scatterplots to visualise the key attributes that correlate with the sale price. |
+| 4.3 | As a user, I want to be able to view the predicted sale price of the inherited houses and predict any house in Ames, Iowa so that I can estimate the value of houses in the area. | 2 | The House Sale Price Predictor page includes the data on the inherited house portfolio, along with the model predicted sale price for each and in total. In addition, the page includes the ability to input house attributes to output a predicted sale price. |
+| 4.4 | As a user, I want to be able to view the project hypothesis and validation, so that I can understand the background to the project. | 1 | The Hypothesis and Validation page provides information on the hypothesis made at the start of the project, and how it was validated during the project. |
+| 4.5 | As a user, I want to be able to view information on the model performance so that I can understand how well the machine learning has worked. | 2 | The ML Model Performance page provides information, statistics and visualisations for the ML pipeline. |
+
+### Epic 5: Dashboard deployment and release
+
+| Ref | User Story | Business Requirement(s) | Completion |
+| --- | --- | --- | --- |
+| 5.1 | As a user, I want to be able to view the dashboard so that I can access all the relevant information and predict house prices. | 1,2 | The dashboard has been deployed to Heroku |
 
 ## Dashboard Design
 * List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other items that your dashboard library supports.
@@ -79,25 +120,34 @@ A high-level summary of the project, including:
 * the business/client requirements.
 
 ### Page 2: House Sale Price Study
-
+Data analysis on the sale price, including:
+* a summary of the dataset for the user to inspect;
+* conclusions made on the correlation study; and
+* visualisations of the correlations.
 
 ### Page 3: House Sale Price Predictor
-
+Information on predicting sale prices, including:
+* the predicted sale price of the client's inherited properties; and
+* the ability to input house attributes in order to predict the sale price of any house in Ames, Iowa.
 
 ### Page 4: Project Hypothesis and Validation
-
+Information on the hypothesis made before undertaking the project, including:
+* a summary of how the hypothesis was validated as part of the correlation study.
 
 ### Page 5: ML Model Performance
-
+Information on the machine learning model used for the house sale price predictor, including:
+* the pipeline itself;
+* the most important features used to train the model; and
+* pipeline performance metrics.
 
 ## Unfixed Bugs
-* You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+There are no known unfixed bugs in the current version of the deployed dashboard.
 
 ## Deployment
-### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* The project was deployed to Heroku using the following steps.
+The App live link is: https://heritage-housing.herokuapp.com/
+
+The project was deployed to Heroku using the following steps.
 
 1. Log in to Heroku and create an App
 2. At the Deploy tab, select GitHub as the deployment method.
@@ -107,28 +157,31 @@ A high-level summary of the project, including:
 
 
 ## Main Data Analysis and Machine Learning Libraries
-* Here you should list the libraries you used in the project and provide example(s) of how you used these libraries.
+The following libraries were used in the development of this project:
+* [Numpy](https://numpy.org/): support for large, multi-dimensional arrays and matrices, along with mathematical functions to operate on these arrays. Used for the arrays used when displaying heatmaps in the correlation study.
+* [Pandas](https://pandas.pydata.org/): data manipulation and analysis. Used for the dataframes in the price predictor and model performance pages.
+* [MatPlotLib](https://matplotlib.org/): plotting library for Python and NumPy. Used to plot the charts in the correlation study and model performance pages.
+* [Seaborn](https://seaborn.pydata.org/): a library that uses Matplotlib underneath to plot graphs. Used to plot the charts in the correlation study.
+* [Pandas Profiling](https://pypi.org/project/pandas-profiling/): provides one-line Exploratory Data Analysis (EDA). Used in the Jupyter notebooks to examine the dataset and provide insights.
+* [PPS Score](https://github.com/8080labs/ppscore): a data-type-agnostic score that can detect linear or non-linear relationships between two columns. Used in the correlation study to determine which variables have relationships with the target variable.
+* [Streamlit](https://streamlit.io/): an app framework for ML dashboards. Used for the dashboarding for this project.
+* [Feature Engine](https://feature-engine.readthedocs.io/en/latest/): a library with transformers to engineer and select features to use in machine learning models. Used for data cleaning and data transformation in the Feature Engineering Jupyter notebook.
 
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
 ### Content 
 
-- The custom functions used to compute and visualise correlation and PPS as part of the House Price Correlation work have been taken from the Code Institution learning materials, specifically the "Predictive Power Score Unit 1" lesson notebook.
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
+- Various custom functions and code have been taken from the Code Institute Churnometer Walkthrough Project, and have been referenced as such when used in the relevant Jupyter notebooks.
+- The template for the project (including the ReadMe) has been taken from the Code Institute project handbook.
 
 ### Media
 
-- The photos used on the home and sign-up page are from This Open Source site
-- The images used for the gallery page were taken from this other open-source site
+- The page icon has been take from [Twemoji](https://twemoji.twitter.com/).
 
 
-
-## Acknowledgements (optional)
-* In case you would like to thank the people that provided support through this project.
+## Acknowledgements
+Grateful thanks to the following:
+* The Code Institute students for their assistance on Slack.
+* My partner, Scott, for his continued support throughout the process.
 

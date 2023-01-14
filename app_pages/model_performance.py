@@ -27,7 +27,7 @@ def model_performance_body():
 
     st.info(
         f"* A regressor model was built to predict the sales price of houses in Ames, Iowa, to address the second business requirement.\n"
-        f"* The client required the model have an R2 score of at least 0.7.\n"
+        f"* The client required the model have an R2 score of at least 0.75.\n"
         f"* Both the train set and test set achieved R2 scores in excess of the requirement, at 0.839 and 0.773.\n"
         f"* Therefore the model has been deemed suitable to meeting the client's needs.\n"
         f"* The sections below detail more information about the pipeline model and its associated performance metrics."
@@ -55,6 +55,6 @@ def model_performance_body():
 
     regression_performance(X_train, y_train, X_test, y_test, predict_price_pipe)
 
-    st.write("The predicted sale price values have been compared to the actual values in the plots below.")
+    st.write("The predicted sale price values have been compared to the actual values in the plots below. Note: may take a few moments to load.")
 
     regression_evaluation_plots(X_train, y_train, X_test, y_test, predict_price_pipe)
