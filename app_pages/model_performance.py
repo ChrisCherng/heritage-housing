@@ -42,7 +42,9 @@ def model_performance_body():
     st.write("---")
 
     # show best features
-    st.write("The features the model was trained on, and their importance, are shown below.")
+    st.write("The features the model was trained on, and their importance, are shown below.\n"
+        "The graph shows, in ratio terms, how important each of these variables is to the prediction.\n"
+        "For example, OverallQual accounts for over half of the importance when predicting house price.")
     st.write(X_train.columns.to_list())
     st.image(feat_importance)
 
@@ -55,6 +57,7 @@ def model_performance_body():
 
     regression_performance(X_train, y_train, X_test, y_test, predict_price_pipe)
 
-    st.write("The predicted sale price values have been compared to the actual values in the plots below. Note: may take a few moments to load.")
+    st.write("The predicted sale price values have been compared to the actual values in the plots below. This shows that the predictions are generally close to the actual values.\n"
+        "Note: may take a few moments to load.")
 
     regression_evaluation_plots(X_train, y_train, X_test, y_test, predict_price_pipe)

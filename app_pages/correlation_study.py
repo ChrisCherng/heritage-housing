@@ -50,6 +50,8 @@ def correlation_study_body():
 
     st.write(
         f"Select the below to view scatterplots of the most correlated variables."
+        f"This shows how each of the selected variables compares to the target variable of SalePrice."
+        f"The correlations can be seen through the patterns in the scatterpoints, showing the trends."
     )
 
     df_eda = df.filter(vars_to_study + ['SalePrice'])
