@@ -1,3 +1,4 @@
+# Import relevant libraries and data
 import streamlit as st
 from src.data_management import load_house_prices_data
 
@@ -7,8 +8,10 @@ import seaborn as sns
 sns.set_style("whitegrid")
 import ppscore as pps
 
+# Body of information to be included in the dashboard
 def correlation_study_body():
 
+    # Set dataframe with house price data
     df = load_house_prices_data()
 
     # hard copied from correlation study notebook
@@ -20,6 +23,7 @@ def correlation_study_body():
         f"* The client is interested in discovering how the house attributes correlate with the sale price."
     )
 
+    # Checkbox widget for displaying data
     if st.checkbox("Inspect House Price Data"):
         st.write(
             f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns. "
@@ -54,6 +58,7 @@ def correlation_study_body():
         f"The correlations can be seen through the patterns in the scatterpoints, showing the trends."
     )
 
+    # Set dataframe filtered for only variables to study
     df_eda = df.filter(vars_to_study + ['SalePrice'])
 
     if st.checkbox("Sales Price per Variable"):
@@ -66,6 +71,7 @@ def correlation_study_body():
         f"correlation of variables to each other, as well as the Predictive Power Score (PPS)."
     )
 
+    # Checkbox widget to display the Spearman correlation information
     if st.checkbox("Spearman Correlations"):
         st.write(
             f"* This plot shows how correlated each variable is to each other, in terms of a monotonic relationship.\n"
@@ -74,6 +80,7 @@ def correlation_study_body():
         df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
         heatmap_corr(df=df_corr_spearman, threshold=0.6, figsize=(20, 12), font_annot=15)
 
+    # Checkbox widget to display the Pearson correlation information
     if st.checkbox("Peason Correlations"):
         st.write(
             f"* This plot shows how correlated each variable is to each other, in terms of a linear relationship.\n"
@@ -82,6 +89,7 @@ def correlation_study_body():
         df_corr_pearson, df_corr_spearman, pps_matrix = CalculateCorrAndPPS(df)
         heatmap_corr(df=df_corr_pearson, threshold=0.6, figsize=(20, 12), font_annot=15)
 
+    # Checkbox widget to display the PPS information
     if st.checkbox("Predictive Power Score"):
         st.write(
             f"* This plot shows how strong a variable (on the x-axis) can predict a variable on the y-axis.\n"
@@ -138,6 +146,7 @@ def heatmap_pps(df, threshold, figsize=(20, 12), font_annot=15):
         plt.ylim(len(df.columns), 0)
         st.pyplot(fig)
 
+# Function to calculate correlations and PPS
 def CalculateCorrAndPPS(df):
     df_corr_spearman = df.corr(method="spearman")
     df_corr_pearson = df.corr(method="pearson")

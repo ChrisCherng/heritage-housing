@@ -1,5 +1,7 @@
+# Import streamlit
 import streamlit as st
 
+# Setup streamlit multipage
 class MultiPage:
 
     def __init__(self, app_name) -> None:

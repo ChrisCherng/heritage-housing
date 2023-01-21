@@ -1,9 +1,11 @@
+# Import relevant libraries and data
 import streamlit as st
 import pandas as pd
 
 from src.data_management import (load_house_prices_data, load_inherited_houses_data, load_pkl_file)
 from src.machine_learning.predictive_analysis_ui import predict_price
 
+# Body of information to be included in the dashboard
 def price_predictor_body():
     st.write("### House Sale Price Predictor")
 
@@ -18,6 +20,7 @@ def price_predictor_body():
         f"Using the machine learning pipeline, the predicted sales price for each is listed below the table (referenced using the index in the table)."
     )    
 
+    # Display the data for the inherited houses
     st.write(df_inherited_houses_data)
 
     st.write(
@@ -34,6 +37,7 @@ def price_predictor_body():
         f"The below can be used to input the key attributes of the house in Ames, Iowa, and output the predicted sales price."
     )
 
+    # Add widgets to input attributes
     X_live = DrawInputsWidgets()
 
     price_prediction = predict_price(X_live, features, pipeline_regressor)
@@ -41,11 +45,13 @@ def price_predictor_body():
     if st.button("Predict Price"):
         st.success(f"Predicted house price: {price_prediction}")
 
+# Load data, pipeline and features
 version = 'v1'
 df_inherited_houses_data = load_inherited_houses_data()
 pipeline_regressor = load_pkl_file(f"outputs/ml_pipeline/predict_price/{version}/final_regressor_pipeline.pkl")
 features = (pd.read_csv(f"outputs/ml_pipeline/predict_price/{version}/X_train.csv").columns.to_list())
 
+# Function to create the input widgets for user predictions
 def DrawInputsWidgets():
 
     # load dataset
@@ -59,7 +65,7 @@ def DrawInputsWidgets():
     # create an empty DataFrame, which will be the live data
     X_live = pd.DataFrame([], index=[0])
 
-    # from here on we draw the widget based on the variable type (numerical or categorical)
+    # draw the widget based on the variable
     # and set initial values
     with col1:
         feature = "OverallQual"

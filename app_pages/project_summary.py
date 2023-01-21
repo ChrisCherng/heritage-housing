@@ -1,5 +1,7 @@
+# Import streamlit
 import streamlit as st
 
+# Body of information to be included in the dashboard
 def project_summary_body():
     st.write("### Project Summary")
 

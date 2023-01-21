@@ -1,3 +1,4 @@
+# Import relevant libraries, data, pipeline and graphs
 import streamlit as st
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -6,6 +7,7 @@ from src.data_management import load_pkl_file
 from src.machine_learning.predictive_analysis_ui import predict_price
 from src.machine_learning.evaluate_pipeline import regression_performance, regression_evaluation, regression_evaluation_plots
 
+# Body of information to be included in the dashboard
 def model_performance_body():
 
     # load pipeline files
@@ -50,7 +52,7 @@ def model_performance_body():
 
     st.write("---")
 
-    # evaluate performance on both sets
+    # display performance on both sets
     st.write("### Pipeline Performance")
 
     st.write("The key metrics evaluating the performance of the pipeline are shown below.")

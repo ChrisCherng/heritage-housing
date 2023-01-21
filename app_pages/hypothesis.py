@@ -1,5 +1,7 @@
+# Import streamlit for displaying the dashboard
 import streamlit as st
 
+# Body of information to be included in the dashboard
 def hypothesis_body():
     st.write("### Project Hypothesis and Validation")
 

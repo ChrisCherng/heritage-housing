@@ -2,11 +2,13 @@
 
 Heritage Housing is a project designed to study and predict the sales prices of houses in the city of Ames, Iowa, as requested by a client.
 
+The App live link is: https://heritage-housing.herokuapp.com/
+
 ## Dataset Content
 * The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data).
 * The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
 
-|Variable|Meaning|Units|
+|Variable|Meaning|Unit Range|
 |:----|:----|:----|
 |1stFlrSF|First Floor square feet|334 - 4692|
 |2ndFlrSF|Second-floor square feet|0 - 2065|
@@ -134,14 +136,15 @@ A high-level summary of the project, including:
 
 ### Page 2: House Sale Price Study
 Data analysis on the sale price, including:
-* a summary of the dataset for the user to inspect;
+* a summary of the dataset for the user to inspect, using a checkbox widget to display;
 * conclusions made on the correlation study; and
-* visualisations of the correlations.
+* visualisations of the correlations, accessed via checkbox widgets.
 
 ### Page 3: House Sale Price Predictor
 Information on predicting sale prices, including:
-* the predicted sale price of the client's inherited properties; and
-* the ability to input house attributes in order to predict the sale price of any house in Ames, Iowa.
+* information on the client's inherited properties;
+* the predicted sale price of the client's inherited properties (including total); and
+* the ability to input house attributes in order to predict the sale price of any house in Ames, Iowa, using input widgets.
 
 ### Page 4: Project Hypothesis and Validation
 Information on the hypothesis made before undertaking the project, including:
