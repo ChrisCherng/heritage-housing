@@ -1,5 +1,7 @@
+# Import streamlit library
 import streamlit as st
 
+# Run prediction from pipeline
 def predict_price(X_live, features, pipeline):
 
     # from live data, subset features related to this pipeline
