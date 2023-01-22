@@ -44,7 +44,7 @@ Although your friend has an excellent understanding of property prices in her ow
 * 1 - The client is interested in discovering how the house attributes correlate with the sale price. Therefore, the client expects data visualisations of the correlated variables against the sale price to show that.
 * 2 - The client is interested in predicting the house sale price from her four inherited houses and any other house in Ames, Iowa.
 
-The client has indicated that any model used for predicting the house sale prices must have an R2 score of at least 0.75 in order to give her confidence in the results.
+The client has indicated that any model used for predicting the house sale prices must have an R2 score of at least 0.75 in order to give her confidence in the results. Note: The R2 (or R squared) metric, is the proportion of the variation in the dependent variable that is predictable from the independent variable(s)
 
 ## Hypothesis and Validation
 Before undertaking the data analysis, a project hypothesis was posed. This is the outcome that would be expected, and will be verified as to whether it is true or not as part of the data analysis.
@@ -78,7 +78,7 @@ This project uses the CRISP-DM process model as the base for the tasks. This sta
 | Phase | How Addressed |
 | --- | --- |
 | 1. Business Understanding | The Business Understanding phase focuses on understanding the objectives and requirements of the project. This has been demonstrated in this ReadMe file through the Business Requirements and ML Business Case sections above. |
-| 2. Data Understanding | This phase seeks to identify, collect, and analyze the data sets. The data been provided by the client and collected from Kaggle within the Data Collection Jupyter notebook. Analysis has been performed in the House Price Correlation Jupyter notebook, with the results presented in the House Sale Price Study page in the dashboard. |
+| 2. Data Understanding | This phase seeks to identify, collect, and analyze the data sets. The data has been provided by the client and collected from Kaggle within the Data Collection Jupyter notebook. Analysis has been performed in the House Price Correlation Jupyter notebook, with the results presented in the House Sale Price Study page in the dashboard. |
 | 3. Data Preparation | The Data Preparation phase looks to get the final data set ready for modeling. This has been performed as part of the Data Cleaning and Feature Engineering Jupyter notebooks. |
 | 4. Modelling | This phase looks to build and assess various models based on several different modeling techniques. This has been performed within the Predict Price Jupyter notebook. The information on the final model presented within the ML Model Performance page in the dashboard. |
 | 5. Evaluation | The Evaluation phase considers which model best meets the requirements. This is addressed in the Predict Price Jupyter notebook, where a number of algorithms and hyper parameters are considered and reviewed. The final model is also evaluated for whether it meets the business requirements. Information with the metrics on the final model are included within the ML Model Performance page in the dashboard. |
@@ -157,7 +157,9 @@ Information on the machine learning model used for the house sale price predicto
 * pipeline performance metrics.
 
 ## Unfixed Bugs
-There are no known unfixed bugs in the current version of the deployed dashboard.
+Currently, the Twemoji of a house used as the streamlit favicon is not showing in the live (deployed) version of the dashboard, but is showing when running locally. This does not have any impact on the functionality of the dashboard, or the completion of the business requirements. The issue will be resolved in future versions.
+
+No other unfixed bugs have been identified.
 
 ## Deployment
 
@@ -174,7 +176,7 @@ The project was deployed to Heroku using the following steps.
 
 ## Main Data Analysis and Machine Learning Libraries
 The following libraries were used in the development of this project:
-* [Numpy](https://numpy.org/): support for large, multi-dimensional arrays and matrices, along with mathematical functions to operate on these arrays. Used for the arrays used when displaying heatmaps in the correlation study.
+* [NumPy](https://numpy.org/): support for large, multi-dimensional arrays and matrices, along with mathematical functions to operate on these arrays. Used for the arrays used when displaying heatmaps in the correlation study.
 * [Pandas](https://pandas.pydata.org/): data manipulation and analysis. Used for the dataframes in the price predictor and model performance pages.
 * [MatPlotLib](https://matplotlib.org/): plotting library for Python and NumPy. Used to plot the charts in the correlation study and model performance pages.
 * [Seaborn](https://seaborn.pydata.org/): a library that uses Matplotlib underneath to plot graphs. Used to plot the charts in the correlation study.
