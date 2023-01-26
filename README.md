@@ -157,9 +157,8 @@ Information on the machine learning model used for the house sale price predicto
 * pipeline performance metrics.
 
 ## Unfixed Bugs
-Currently, the Twemoji of a house used as the streamlit favicon is not showing in the live (deployed) version of the dashboard, but is showing when running locally. This does not have any impact on the functionality of the dashboard, or the completion of the business requirements. The issue will be resolved in future versions.
 
-No other unfixed bugs have been identified.
+No unfixed bugs have currently been identified.
 
 ## Deployment
 
