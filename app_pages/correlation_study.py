@@ -36,7 +36,7 @@ def correlation_study_body():
     st.write(
         f"A correlation study was conducted in the notebook to better understand how "
         f"the variables are correlated to the sales price. \n"
-        f"Based on this study, the most correlated variable are: **{vars_to_study}**"
+        f"Based on this study, the most correlated variables are: **{vars_to_study}**"
     )
 
     st.success(
@@ -53,8 +53,8 @@ def correlation_study_body():
     )
 
     st.write(
-        f"Select the below to view scatterplots of the most correlated variables."
-        f"This shows how each of the selected variables compares to the target variable of SalePrice."
+        f"Select the below to view scatterplots of the most correlated variables. "
+        f"This shows how each of the selected variables compares to the target variable of SalePrice. "
         f"The correlations can be seen through the patterns in the scatterpoints, showing the trends."
     )
 

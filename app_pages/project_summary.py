@@ -14,9 +14,9 @@ def project_summary_body():
         f"* The data has been sourced from [Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data).\n\n"
         f"**Project Terms & Jargon**\n"
         f"* The **variables** are the different attributes of the house.\n"
-        f"* The **target variable** is the variable that is trying to be predicted."
+        f"* The **target variable** is the variable that is trying to be predicted. "
         f"For this project, this is the **sale price** of the house.\n"
-        f"* The **R2 (or R squared)** metric, is the proportion of the variation in the dependent variable that is predictable from the independent variable(s)"
+        f"* The **R2 (or R squared)** metric, is the proportion of the variation in the dependent variable that is predictable from the independent variable(s)."
     )
 
     st.write(

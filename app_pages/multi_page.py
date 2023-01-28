@@ -10,7 +10,7 @@ class MultiPage:
 
         st.set_page_config(
             page_title = self.app_name,
-            page_icon = "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e0.png"
+            # page_icon = "https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/72x72/1f3e0.png"
         )
 
     def app_page(self, title, func) -> None:
