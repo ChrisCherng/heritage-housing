@@ -157,8 +157,9 @@ Information on the machine learning model used for the house sale price predicto
 * pipeline performance metrics.
 
 ## Unfixed Bugs
+Currently, no favicon has been implemented into the dashboard page. This is due to maxcdn no longer being operational and therefore will not work with the expected methods. The jsdelivr cdn was used instead, however this causes the page to crash. Therefore, for the purposes of deployment, no favicon has been used. This does not have any impact on the functionality of the dashboard, or the completion of the client's requirements.
 
-No unfixed bugs have currently been identified.
+No other unfixed bugs have currently been identified.
 
 ## Deployment
 
